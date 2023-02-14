@@ -16,15 +16,13 @@ public class OfferController {
     private OfferRepository offerRepository;
 
     @PostMapping(path="/add") // Map ONLY POST Requests
-    public @ResponseBody String addNewOffer (@RequestParam String name
-            , @RequestParam String email) {
+    public @ResponseBody String addNewOffer (@RequestParam String name) {
         // @ResponseBody means the returned String is the response, not a view name
         // @RequestParam means it is a parameter from the GET or POST request
 
-//        User n = new User();
-//        n.setName(name);
-//        n.setEmail(email);
-//        userRepository.save(n);
+        Offer new_offer = new Offer();
+        new_offer.setName(name);
+        offerRepository.save(new_offer);
         return "Saved";
     }
 
